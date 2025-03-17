@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5059
+EXPOSE 5089
 
-ENV DEBUG="socket.io:*"
-
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
