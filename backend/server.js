@@ -43,6 +43,14 @@ initializeKarts();
 
 io.on('connection', (socket) => {
     console.log('User connected', socket.id, socket.id); // Ajouté socket.id
+    socket.on('error', (error) => {
+        console.error('Socket.IO connection error:', error);
+    });
+
+    socket.on('disconnect', (reason) => {
+        console.log('User disconnected', socket.id, reason);
+    });
+
     socket.emit('state', { password, kartCount, laneColors, karts, lanes, waitingLane });
 
     socket.on('login', (providedPassword) => {
